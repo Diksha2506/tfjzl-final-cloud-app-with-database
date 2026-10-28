@@ -132,6 +132,7 @@ def show_exam_result(request, course_id, submission_id):
     context['course'] = course
     context['grade'] = grade
     context['submission'] = submission
+    context['selected_ids'] = list(selected_ids)
     context['total_score'] = total_score
     context['max_score'] = max_score
 

@@ -100,7 +100,7 @@ class Question(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, null=True, blank=True)
     question_text = models.CharField(max_length=500)
-    grade = models.IntegerField(default=5)
+    grade = models.IntegerField(default=1)
 
     def is_get_score(self, selected_ids):
         all_answers = self.choice_set.filter(is_correct=True).count()
@@ -131,4 +131,5 @@ class Submission(models.Model):
     date_submitted = models.DateField(default=now)
 
     def __str__(self):
-        return f"Submission {self.id} by {self.enrollment.user.username}"
+        return "Enrollment user: " + self.enrollment.user.username + "," + \
+               "Date: " + str(self.date_submitted)
